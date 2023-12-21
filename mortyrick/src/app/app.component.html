@@ -1,0 +1,11 @@
+<ul>
+  @for(link of links; track link) {
+  <li>
+    <a [routerLink]="link">{{ link }}</a>
+  </li>
+  }
+</ul>
+
+<div>
+  <router-outlet></router-outlet>
+</div>
