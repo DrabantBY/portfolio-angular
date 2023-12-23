@@ -1,3 +1,8 @@
-<button mat-mini-fab color="primary">
-  <mat-icon>menu</mat-icon>
+<button
+  mat-mini-fab
+  color="primary"
+  (click)="toggleBtnIsClosed()"
+  [color]="(btnIsClosed$ | async) ? 'warn' : 'primary'"
+>
+  <mat-icon>{{ (btnIsClosed$ | async) ? "close" : "menu" }}</mat-icon>
 </button>

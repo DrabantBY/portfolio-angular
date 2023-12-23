@@ -1,0 +1,13 @@
+<mat-drawer-container class="app-main" (backdropClick)="closeDrawer()">
+  <mat-drawer
+    mode="over"
+    position="end"
+    autoFocus="false"
+    [opened]="drawerIsOpen$ | async"
+  >
+    Drawer content
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
