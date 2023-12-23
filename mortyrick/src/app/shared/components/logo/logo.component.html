@@ -1,0 +1,12 @@
+<a
+  mat-fab
+  extended
+  [color]="rla.isActive ? 'accent' : 'primary'"
+  routerLink="/"
+  routerLinkActive
+  #rla="routerLinkActive"
+  [routerLinkActiveOptions]="{ exact: true }"
+>
+  <mat-icon svgIcon="logo"></mat-icon>
+  {{ logo | uppercase }}
+</a>

@@ -1,31 +1,5 @@
-<mat-toolbar color="primary">
-  <a
-    routerLink="/"
-    [routerLinkActiveOptions]="{ exact: true }"
-    routerLinkActive="active"
-    >ASD</a
-  >
-
-  <nav [ngStyle]="{ display: 'flex', gap: '0.5rem' }">
-    @for(link of links; track link) {
-    <a
-      mat-raised-button
-      [routerLink]="link"
-      routerLinkActive
-      #rla="routerLinkActive"
-      [color]="rla.isActive ? 'accent' : 'primary'"
-      >{{ link + "s" | uppercase }}</a
-    >
-    }
-  </nav>
-
-  <button mat-mini-fab color="primary">
-    <mat-icon>menu</mat-icon>
-  </button>
-</mat-toolbar>
-
+<app-header></app-header>
 <div>
   <router-outlet></router-outlet>
 </div>
-
-<mat-toolbar color="primary"> </mat-toolbar>
+<app-footer></app-footer>
