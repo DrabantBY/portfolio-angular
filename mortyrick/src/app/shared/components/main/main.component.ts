@@ -5,6 +5,7 @@ import { NavMenuService } from '../../services/nav-menu.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { NavMenuComponent } from '../nav-menu/nav-menu.component';
+import { BreakpointService } from '../../services/breakpoint.service';
 
 @Component({
   imports: [RouterOutlet, MatSidenavModule, AsyncPipe, NavMenuComponent],
@@ -15,8 +16,12 @@ import { NavMenuComponent } from '../nav-menu/nav-menu.component';
 })
 export class MainComponent implements OnInit {
   drawerIsOpen$: Observable<boolean>;
+  isSmallSize$: Observable<boolean>;
 
-  constructor(private readonly navMenuService: NavMenuService) {}
+  constructor(
+    private readonly navMenuService: NavMenuService,
+    private readonly breakpointService: BreakpointService
+  ) {}
 
   closeDrawer(): void {
     this.navMenuService.toggleNavMenuIsOpen();
@@ -24,5 +29,6 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.drawerIsOpen$ = this.navMenuService.navMenuIsOpen$;
+    this.isSmallSize$ = this.breakpointService.isBreakpointSmall$;
   }
 }

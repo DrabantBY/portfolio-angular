@@ -1,4 +1,5 @@
 <mat-drawer-container class="app-main" (backdropClick)="closeDrawer()">
+  @if(isSmallSize$ | async) {
   <mat-drawer
     mode="over"
     position="end"
@@ -7,6 +8,7 @@
   >
     <app-nav-menu [isSideNav]="true"></app-nav-menu>
   </mat-drawer>
+  }
   <mat-drawer-content>
     <router-outlet></router-outlet>
   </mat-drawer-content>

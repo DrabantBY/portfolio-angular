@@ -1,5 +1,8 @@
 <mat-toolbar color="primary">
   <app-logo></app-logo>
-  <app-nav-menu [isSideNav]="false"></app-nav-menu>
+  @if(isSmallSize$| async) {
   <app-btn-menu></app-btn-menu>
+  }@else {
+  <app-nav-menu [isSideNav]="false"></app-nav-menu>
+  }
 </mat-toolbar>
