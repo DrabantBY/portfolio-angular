@@ -1,14 +1,9 @@
+import { CharacterService } from './services/character.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { characterIsLoadingSelector } from './store/character.selectors';
-import { characterAction } from './store/character.actions';
-import { AppStateInterface } from '../shared/types/appState.interface';
-import { NavigationEnum } from './../shared/types/navigation.enum';
-import { CharacterService } from './services/character.service';
-import { CharacterInterface } from './types/character.interface';
 import { AsyncPipe } from '@angular/common';
+import { Observable } from 'rxjs';
+import { CharacterInterface } from './types/character.interface';
 
 @Component({
   imports: [HttpClientModule, AsyncPipe],
@@ -19,25 +14,11 @@ import { AsyncPipe } from '@angular/common';
   styleUrl: './characters.component.scss',
 })
 export class CharactersComponent implements OnInit {
-  characters: CharacterInterface[];
+  constructor(private readonly characterService: CharacterService) {}
 
-  isLoading$: Observable<boolean>;
-
-  constructor(
-    private readonly characterService: CharacterService,
-    private readonly store: Store<AppStateInterface>
-  ) {}
+  character$: Observable<CharacterInterface[]>;
 
   ngOnInit(): void {
-    this.characterService
-      .getCharacters(NavigationEnum.CHARACTER)
-      .subscribe((results) => {
-        this.characters = results;
-      });
-
-    // this.store.dispatch(characterAction({ link: NavigationEnum.CHARACTER }));
-
-    // this.isLoading$ = this.store.pipe(select(characterIsLoadingSelector));
-    // console.log(this.isLoading$);
+    this.character$ = this.characterService.getCharacters();
   }
 }

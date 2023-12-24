@@ -1,6 +1,5 @@
 import { CharacterInterface } from './../types/character.interface';
 import { createAction, props } from '@ngrx/store';
-import { NavigationEnum } from '../../shared/types/navigation.enum';
 
 export enum CharacterActionsEnum {
   CHARACTER = '[Character] Character',

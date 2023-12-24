@@ -10,9 +10,10 @@ import { CharacterInterface } from '../types/character.interface';
 export class CharacterService {
   constructor(private readonly http: HttpClient) {}
 
-  getCharacters(link: NavigationEnum): Observable<CharacterInterface[]> {
+  getCharacters(): Observable<CharacterInterface[]> {
+    const url = `${environment.baseURL}/${NavigationEnum.CHARACTER}`;
     return this.http
-      .get<CharacterResponseType>(`${environment.baseURL}/${link}`)
+      .get<CharacterResponseType>(url)
       .pipe(
         map(
           (response: CharacterResponseType): CharacterInterface[] =>

@@ -1,11 +1,13 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationService } from './services/location.service';
 import { LocationInterface } from './types/location.interface';
 import { NavigationEnum } from '../shared/types/navigation.enum';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, AsyncPipe],
   providers: [LocationService],
   selector: 'app-locations',
   standalone: true,
@@ -13,15 +15,11 @@ import { NavigationEnum } from '../shared/types/navigation.enum';
   styleUrl: './locations.component.scss',
 })
 export class LocationsComponent implements OnInit {
-  locations: LocationInterface[];
+  location$: Observable<LocationInterface[]>;
 
   constructor(private readonly locationService: LocationService) {}
 
   ngOnInit(): void {
-    this.locationService
-      .getLocations(NavigationEnum.LOCATION)
-      .subscribe((locationResponse) => {
-        this.locations = locationResponse.results;
-      });
+    this.location$ = this.locationService.getLocations();
   }
 }

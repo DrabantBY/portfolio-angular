@@ -1,5 +1,5 @@
 <ul>
-  @for(location of locations; track location.id) {
+  @for(location of (location$ | async); track location.id) {
   <li>{{ location.name }}</li>
   }
 </ul>

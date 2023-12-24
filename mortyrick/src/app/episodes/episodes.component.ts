@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EpisodeInterface } from './types/episode.interface';
 import { EpisodeService } from './services/episode.service';
-import { NavigationEnum } from '../shared/types/navigation.enum';
 import { HttpClientModule } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, AsyncPipe],
   providers: [EpisodeService],
   selector: 'app-episodes',
   standalone: true,
@@ -13,15 +14,11 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './episodes.component.scss',
 })
 export class EpisodesComponent implements OnInit {
-  episodes: EpisodeInterface[];
+  episode$: Observable<EpisodeInterface[]>;
 
   constructor(private readonly episodeService: EpisodeService) {}
 
   ngOnInit(): void {
-    this.episodeService
-      .getEpisodes(NavigationEnum.EPISODE)
-      .subscribe((episodeResponse) => {
-        this.episodes = episodeResponse.results;
-      });
+    this.episode$ = this.episodeService.getEpisodes();
   }
 }
