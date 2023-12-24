@@ -24,7 +24,7 @@ export class MainComponent implements OnInit {
   ) {}
 
   closeDrawer(): void {
-    this.navMenuService.toggleNavMenuIsOpen();
+    this.navMenuService.toggleNavMenuState();
   }
 
   ngOnInit(): void {

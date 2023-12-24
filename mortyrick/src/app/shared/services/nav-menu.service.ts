@@ -5,13 +5,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class NavMenuService {
-  private readonly navMenuIsOpen: BehaviorSubject<boolean> =
+  private readonly navMenuState$: BehaviorSubject<boolean> =
     new BehaviorSubject(false);
 
-  navMenuIsOpen$: Observable<boolean> = this.navMenuIsOpen.asObservable();
+  toggleNavMenuState(): void {
+    const newState = !this.navMenuState$.value;
+    this.navMenuState$.next(newState);
+  }
 
-  toggleNavMenuIsOpen(): void {
-    const newState = !this.navMenuIsOpen.value;
-    this.navMenuIsOpen.next(newState);
+  get navMenuIsOpen$(): Observable<boolean> {
+    return this.navMenuState$.asObservable();
   }
 }

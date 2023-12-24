@@ -18,7 +18,7 @@ export class BtnMenuComponent implements OnInit {
   constructor(private readonly navMenuService: NavMenuService) {}
 
   toggleBtnIsClosed() {
-    this.navMenuService.toggleNavMenuIsOpen();
+    this.navMenuService.toggleNavMenuState();
   }
 
   ngOnInit(): void {
