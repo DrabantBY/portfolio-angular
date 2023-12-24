@@ -1,3 +1,17 @@
+mat-nav-list {
+  min-width: 25rem;
+}
+
 a[mat-list-item] {
-  width: fit-content;
+  min-width: fit-content;
+  width: 100%;
+
+  &.mdc-list-item {
+    &:focus::before {
+      display: none;
+    }
+    &--activated {
+      background-color: rgba(156, 39, 176, 0.1);
+    }
+  }
 }

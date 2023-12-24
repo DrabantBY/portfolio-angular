@@ -1,7 +1,7 @@
-<!-- <mat-nav-list role="navigation">
-  @for(link of links; track link) {
+@if(isSideNav) {
+<mat-nav-list
+  >@for(link of links; track link) {
   <a
-    
     mat-list-item
     [routerLink]="link"
     routerLinkActive
@@ -9,8 +9,10 @@
     [activated]="rla.isActive"
     >{{ link + "s" | uppercase }}</a
   >
-  }
-</mat-nav-list> -->
+  }</mat-nav-list
+>
+
+} @else {
 <nav
   mat-tab-nav-bar
   [backgroundColor]="'primary'"
@@ -30,3 +32,4 @@
   }
 </nav>
 <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+}

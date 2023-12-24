@@ -5,7 +5,7 @@
     autoFocus="false"
     [opened]="drawerIsOpen$ | async"
   >
-    Drawer content
+    <app-nav-menu [isSideNav]="true"></app-nav-menu>
   </mat-drawer>
   <mat-drawer-content>
     <router-outlet></router-outlet>
