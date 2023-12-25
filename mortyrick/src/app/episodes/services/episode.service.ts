@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NavigationEnum } from '../../shared/types/navigation.enum';
+import { RoutesEnum } from '../../shared/types/routes.enum';
 import { Observable, map } from 'rxjs';
 import { EpisodeResponseType } from '../types/episodeResponse.type';
 import { EpisodeInterface } from '../types/episode.interface';
@@ -11,7 +11,7 @@ export class EpisodeService {
   constructor(private readonly http: HttpClient) {}
 
   getEpisodes(): Observable<EpisodeInterface[]> {
-    const url = `${environment.baseURL}/${NavigationEnum.EPISODE}`;
+    const url = `${environment.baseURL}/${RoutesEnum.EPISODE}`;
     return this.http
       .get<EpisodeResponseType>(url)
       .pipe(

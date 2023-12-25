@@ -1,4 +1,4 @@
-export enum NavigationEnum {
+export enum RoutesEnum {
   CHARACTER = 'character',
   EPISODE = 'episode',
   LOCATION = 'location',

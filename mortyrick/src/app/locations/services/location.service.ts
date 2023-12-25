@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NavigationEnum } from '../../shared/types/navigation.enum';
+import { RoutesEnum } from '../../shared/types/routes.enum';
 import { Observable, map } from 'rxjs';
 import { LocationResponseType } from '../types/locationResponse.type';
 import { environment } from '../../../environments/environment';
@@ -11,7 +11,7 @@ export class LocationService {
   constructor(private readonly http: HttpClient) {}
 
   getLocations(): Observable<LocationInterface[]> {
-    const url = `${environment.baseURL}/${NavigationEnum.LOCATION}`;
+    const url = `${environment.baseURL}/${RoutesEnum.LOCATION}`;
     return this.http
       .get<LocationResponseType>(url)
       .pipe(

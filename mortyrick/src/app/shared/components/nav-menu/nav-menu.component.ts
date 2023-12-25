@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { UpperCasePipe } from '@angular/common';
-import { NavigationEnum } from '../../types/navigation.enum';
+import { RoutesEnum } from '../../types/routes.enum';
 
 @Component({
   imports: [
@@ -21,5 +21,5 @@ import { NavigationEnum } from '../../types/navigation.enum';
 export class NavMenuComponent {
   @Input({ required: true }) isSideNav: boolean;
 
-  links: string[] = Object.values(NavigationEnum);
+  links: string[] = Object.values(RoutesEnum);
 }

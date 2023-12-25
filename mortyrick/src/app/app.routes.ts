@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { CharactersComponent } from './characters/characters.component';
-import { EpisodesComponent } from './episodes/episodes.component';
-import { LocationsComponent } from './locations/locations.component';
+import { CHARACTER_ROUTES } from './characters/characters.routes';
+import { EPISODE_ROUTES } from './episodes/episodes.routes';
+import { LOCATION_ROUTES } from './locations/locations.routes';
 
 export const routes: Routes = [
-  { path: 'character', component: CharactersComponent },
-  { path: 'episode', component: EpisodesComponent },
-  { path: 'location', component: LocationsComponent },
+  ...CHARACTER_ROUTES,
+  ...EPISODE_ROUTES,
+  ...LOCATION_ROUTES,
 ];

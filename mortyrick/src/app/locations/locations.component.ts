@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationService } from './services/location.service';
 import { LocationInterface } from './types/location.interface';
-import { NavigationEnum } from '../shared/types/navigation.enum';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
