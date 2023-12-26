@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RoutesEnum } from '../../shared/types/routes.enum';
 import { Observable, map } from 'rxjs';
 import { CharacterResponseType } from '../types/characterResponse.type';
-import { environment } from '../../../environments/environment';
+import { RoutesEnum } from '../../shared/types/routes.enum';
 import { CharacterInterface } from '../types/character.interface';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class CharacterService {

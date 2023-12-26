@@ -1,1 +1,5 @@
-export const environment = { baseURL: 'https://rickandmortyapi.com/api' };
+export const environment = {
+  imports: [],
+  production: true,
+  baseURL: 'https://rickandmortyapi.com/api',
+};
