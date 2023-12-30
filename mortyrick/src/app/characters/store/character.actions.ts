@@ -1,3 +1,4 @@
+import { ServerErrorInterface } from '../../error/types/serverError.interface';
 import { CharacterInterface } from './../types/character.interface';
 import { createAction, props } from '@ngrx/store';
 
@@ -15,5 +16,6 @@ export const characterSuccessAction = createAction(
 );
 
 export const characterFailureAction = createAction(
-  CharacterActionsEnum.CHARACTER_FAILURE
+  CharacterActionsEnum.CHARACTER_FAILURE,
+  props<{ error: ServerErrorInterface }>()
 );

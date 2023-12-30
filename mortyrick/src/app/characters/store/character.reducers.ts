@@ -1,6 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
 import { CharacterStateInterface } from '../types/characterState.interface';
-import { characterAction, characterSuccessAction } from './character.actions';
+import {
+  characterAction,
+  characterFailureAction,
+  characterSuccessAction,
+} from './character.actions';
 
 const initialState: CharacterStateInterface = {
   results: null,
@@ -24,5 +28,6 @@ export const characterReducer = createReducer(
       isLoading: false,
       results: action.results,
     })
-  )
+  ),
+  on(characterFailureAction, (): CharacterStateInterface => initialState)
 );

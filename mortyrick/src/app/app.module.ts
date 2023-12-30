@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,6 +13,7 @@ import { CharactersModule } from './characters/characters.module';
 import { EpisodesModule } from './episodes/episodes.module';
 import { LocationsModule } from './locations/locations.module';
 import { environment } from '../environments/environment.development';
+import { ErrorModule } from './error/error.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { environment } from '../environments/environment.development';
     HeaderComponent,
     MainComponent,
     FooterComponent,
+    ErrorModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     environment.imports,
