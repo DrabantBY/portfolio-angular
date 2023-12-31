@@ -1,10 +1,10 @@
 import { ErrorHandler, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorComponent } from './components/error/error.component';
 import { GlobalClientErrorService } from './services/global-client-error.service';
 import { GlobalServerError } from './services/global-server-error.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 const routes = [{ path: 'error', component: ErrorComponent }];
 

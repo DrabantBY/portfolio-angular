@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs/internal/observable/of';
-import { map, switchMap, catchError, mergeMap } from 'rxjs/operators';
+import { map, switchMap, catchError } from 'rxjs/operators';
 import {
   characterAction,
   characterFailureAction,
@@ -39,7 +39,7 @@ export class CharacterEffect {
     () =>
       this.actions$.pipe(
         ofType(characterFailureAction),
-        mergeMap(({ error }) => throwError(() => error))
+        switchMap(({ error }) => throwError(() => error))
       ),
     { dispatch: false }
   );

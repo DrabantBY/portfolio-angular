@@ -14,7 +14,7 @@ export class GlobalClientErrorService implements ErrorHandler {
     if (error instanceof HttpErrorResponse) {
       navigationExtras.state = {
         statusCode: error.status,
-        statusText: error.error.error ?? error.statusText,
+        statusText: error.error?.error ?? error.statusText,
       };
     } else {
       navigationExtras.state = {
