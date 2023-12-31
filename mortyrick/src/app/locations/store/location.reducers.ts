@@ -1,11 +1,14 @@
 import { createReducer, on } from '@ngrx/store';
 import { LocationStateInterface } from '../types/locationState.interface';
-import { locationAction, locationSuccessAction } from './location.actions';
+import {
+  locationAction,
+  locationFailureAction,
+  locationSuccessAction,
+} from './location.actions';
 
 const initialState: LocationStateInterface = {
   results: null,
   isLoading: false,
-  errorData: null,
 };
 
 export const locationReducer = createReducer(
@@ -23,6 +26,13 @@ export const locationReducer = createReducer(
       ...state,
       isLoading: false,
       results: action.results,
+    })
+  ),
+  on(
+    locationFailureAction,
+    (state): LocationStateInterface => ({
+      ...state,
+      isLoading: false,
     })
   )
 );

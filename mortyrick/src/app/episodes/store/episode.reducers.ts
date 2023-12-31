@@ -1,11 +1,14 @@
 import { createReducer, on } from '@ngrx/store';
 import { EpisodeStateInterface } from '../types/episodeState.interface';
-import { episodeAction, episodeSuccessAction } from './episode.actions';
+import {
+  episodeAction,
+  episodeFailureAction,
+  episodeSuccessAction,
+} from './episode.actions';
 
 const initialState: EpisodeStateInterface = {
   results: null,
   isLoading: false,
-  errorData: null,
 };
 
 export const episodeReducer = createReducer(
@@ -23,6 +26,13 @@ export const episodeReducer = createReducer(
       ...state,
       isLoading: false,
       results: action.results,
+    })
+  ),
+  on(
+    episodeFailureAction,
+    (state): EpisodeStateInterface => ({
+      ...state,
+      isLoading: false,
     })
   )
 );

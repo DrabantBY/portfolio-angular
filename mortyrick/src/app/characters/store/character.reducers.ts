@@ -7,9 +7,8 @@ import {
 } from './character.actions';
 
 const initialState: CharacterStateInterface = {
-  results: null,
   isLoading: false,
-  errorData: null,
+  results: null,
 };
 
 export const characterReducer = createReducer(
@@ -29,5 +28,11 @@ export const characterReducer = createReducer(
       results: action.results,
     })
   ),
-  on(characterFailureAction, (): CharacterStateInterface => initialState)
+  on(
+    characterFailureAction,
+    (state): CharacterStateInterface => ({
+      ...state,
+      isLoading: false,
+    })
+  )
 );

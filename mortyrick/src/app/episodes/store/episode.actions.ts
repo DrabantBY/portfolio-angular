@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { EpisodeInterface } from '../types/episode.interface';
 import { createAction, props } from '@ngrx/store';
 
@@ -15,5 +16,6 @@ export const episodeSuccessAction = createAction(
 );
 
 export const episodeFailureAction = createAction(
-  EpisodeActionsEnum.EPISODE_FAILURE
+  EpisodeActionsEnum.EPISODE_FAILURE,
+  props<{ error: HttpErrorResponse }>()
 );

@@ -13,7 +13,6 @@ export class ErrorComponent implements OnInit {
   constructor(private readonly location: Location) {}
 
   ngOnInit(): void {
-    const state = <{ error: ServerErrorInterface }>this.location.getState();
-    this.error = state.error;
+    this.error = <ServerErrorInterface>this.location.getState();
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs/internal/observable/of';
-import { map, switchMap, catchError } from 'rxjs/operators';
+import { map, switchMap, catchError, mergeMap } from 'rxjs/operators';
 import {
   episodeAction,
   episodeFailureAction,
@@ -9,6 +9,8 @@ import {
 } from './episode.actions';
 import { EpisodeInterface } from './../types/episode.interface';
 import { EpisodeService } from '../services/episode.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 @Injectable()
 export class episodeEffect {
@@ -25,9 +27,20 @@ export class episodeEffect {
           map((results: EpisodeInterface[]) =>
             episodeSuccessAction({ results })
           ),
-          catchError(() => of(episodeFailureAction()))
+          catchError((error: HttpErrorResponse) =>
+            of(episodeFailureAction({ error }))
+          )
         )
       )
     )
+  );
+
+  episodeError$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(episodeFailureAction),
+        mergeMap(({ error }) => throwError(() => error))
+      ),
+    { dispatch: false }
   );
 }

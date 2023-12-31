@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs/internal/observable/of';
-import { map, switchMap, catchError, tap } from 'rxjs/operators';
+import { map, switchMap, catchError, mergeMap } from 'rxjs/operators';
 import {
   characterAction,
   characterFailureAction,
@@ -10,14 +10,13 @@ import {
 import { CharacterInterface } from './../types/character.interface';
 import { CharacterService } from '../services/character.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
 
 @Injectable()
 export class CharacterEffect {
   constructor(
     private readonly actions$: Actions,
-    private readonly characterService: CharacterService,
-    private readonly router: Router
+    private readonly characterService: CharacterService
   ) {}
 
   characterEffect$ = createEffect(() =>
@@ -28,15 +27,9 @@ export class CharacterEffect {
           map((results: CharacterInterface[]) =>
             characterSuccessAction({ results })
           ),
-          catchError((httpErrorResponse: HttpErrorResponse) => {
-            const error = {
-              statusCode: httpErrorResponse.status,
-              statusText:
-                httpErrorResponse.error.error ?? httpErrorResponse.statusText,
-            };
-
-            return of(characterFailureAction({ error }));
-          })
+          catchError((error: HttpErrorResponse) =>
+            of(characterFailureAction({ error }))
+          )
         )
       )
     )
@@ -46,9 +39,7 @@ export class CharacterEffect {
     () =>
       this.actions$.pipe(
         ofType(characterFailureAction),
-        tap((error) => {
-          this.router.navigateByUrl('error', { state: error });
-        })
+        mergeMap(({ error }) => throwError(() => error))
       ),
     { dispatch: false }
   );

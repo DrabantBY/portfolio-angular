@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { characterReducer } from './store/character.reducers';
-
 import { RouterModule } from '@angular/router';
 import { RoutesEnum } from '../shared/types/routes.enum';
 import { CharacterComponent } from './components/character/character.component';

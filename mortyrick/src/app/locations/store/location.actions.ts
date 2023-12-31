@@ -1,5 +1,6 @@
-import { LocationInterface } from './../types/location.interface';
 import { createAction, props } from '@ngrx/store';
+import { LocationInterface } from './../types/location.interface';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export enum LocationActionsEnum {
   LOCATION = '[Location] Location',
@@ -15,5 +16,6 @@ export const locationSuccessAction = createAction(
 );
 
 export const locationFailureAction = createAction(
-  LocationActionsEnum.LOCATION_FAILURE
+  LocationActionsEnum.LOCATION_FAILURE,
+  props<{ error: HttpErrorResponse }>()
 );
