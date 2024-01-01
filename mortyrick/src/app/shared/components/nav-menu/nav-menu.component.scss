@@ -10,8 +10,8 @@ a[mat-list-item] {
     &:focus::before {
       display: none;
     }
-    &--activated {
-      background-color: rgba(156, 39, 176, 0.1);
-    }
+    // &--activated {
+    //   background-color: rgba(25, 9, 108, 0.1);
+    // }
   }
 }
