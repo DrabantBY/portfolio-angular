@@ -1,0 +1,19 @@
+<nav
+  mat-tab-nav-bar
+  [backgroundColor]="'primary'"
+  [tabPanel]="tabPanel"
+  stretchTabs
+>
+  @for (link of links; track link) {
+  <a
+    mat-tab-link
+    [routerLink]="link"
+    routerLinkActive
+    #rla="routerLinkActive"
+    [active]="rla.isActive"
+  >
+    {{ link + "s" | uppercase }}
+  </a>
+  }
+</nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

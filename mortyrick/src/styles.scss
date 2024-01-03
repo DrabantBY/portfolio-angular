@@ -29,8 +29,6 @@ $app-dark-theme: mat.define-dark-theme(
   )
 );
 
-@include mat.all-component-themes($app-dark-theme);
-
 :root {
   font-size: 0.625em;
   box-sizing: border-box;
@@ -56,6 +54,14 @@ body {
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  &.dark_mode {
+    @include mat.all-component-themes($app-dark-theme);
+  }
+
+  &.light_mode {
+    @include mat.all-component-themes($app-light-theme);
   }
 }
 

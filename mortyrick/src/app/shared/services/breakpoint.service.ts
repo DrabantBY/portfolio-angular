@@ -6,15 +6,15 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root',
 })
 export class BreakpointService {
-  private readonly breakpointState$: Observable<boolean>;
-
   constructor(private readonly breakpointObserver: BreakpointObserver) {
-    this.breakpointState$ = this.breakpointObserver
+    this.#breakpointState$ = this.breakpointObserver
       .observe([Breakpoints.XSmall, Breakpoints.Small])
       .pipe(map((state) => state.matches));
   }
 
+  #breakpointState$: Observable<boolean>;
+
   get isBreakpointSmall$(): Observable<boolean> {
-    return this.breakpointState$;
+    return this.#breakpointState$;
   }
 }

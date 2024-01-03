@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <app-header-logo></app-header-logo>
+  @if(isSmallSize$ | async) {
+  <app-header-btn-menu></app-header-btn-menu>
+  }@else {
+  <app-header-nav></app-header-nav>
+  }
+  <app-header-btn-theme></app-header-btn-theme>
+</mat-toolbar>
