@@ -1,6 +1,6 @@
-import { ResponseInfoType } from './responseInfo.type';
+import { ResponseInfoInterface } from './responseInfo.interface';
 
 export type ResponseBodyType<T> = {
-  info: ResponseInfoType;
+  info: ResponseInfoInterface;
   results: T[];
 };
