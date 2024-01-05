@@ -7,10 +7,11 @@ import {
   episodeFailureAction,
   episodeSuccessAction,
 } from './episode.actions';
-import { EpisodeInterface } from './../types/episode.interface';
+
 import { EpisodeService } from '../services/episode.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
+import { EpisodeResponseType } from '../types/episodeResponse.type';
 
 @Injectable()
 export class episodeEffect {
@@ -24,8 +25,8 @@ export class episodeEffect {
       ofType(episodeAction),
       switchMap(() =>
         this.episodeService.getEpisodes().pipe(
-          map((results: EpisodeInterface[]) =>
-            episodeSuccessAction({ results })
+          map(({ results, info }: EpisodeResponseType) =>
+            episodeSuccessAction({ results, info })
           ),
           catchError((error: HttpErrorResponse) =>
             of(episodeFailureAction({ error }))

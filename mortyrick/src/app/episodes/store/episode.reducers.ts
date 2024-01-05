@@ -9,6 +9,7 @@ import {
 const initialState: EpisodeStateInterface = {
   results: null,
   isLoading: false,
+  info: null,
 };
 
 export const episodeReducer = createReducer(
@@ -26,6 +27,7 @@ export const episodeReducer = createReducer(
       ...state,
       isLoading: false,
       results: action.results,
+      info: action.info,
     })
   ),
   on(

@@ -9,6 +9,7 @@ import {
 const initialState: LocationStateInterface = {
   results: null,
   isLoading: false,
+  info: null,
 };
 
 export const locationReducer = createReducer(
@@ -26,6 +27,7 @@ export const locationReducer = createReducer(
       ...state,
       isLoading: false,
       results: action.results,
+      info: action.info,
     })
   ),
   on(

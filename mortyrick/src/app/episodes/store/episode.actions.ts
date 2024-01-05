@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { EpisodeInterface } from '../types/episode.interface';
 import { createAction, props } from '@ngrx/store';
+import { ResponseInfoInterface } from '../../shared/types/responseInfo.interface';
 
 export enum EpisodeActionsEnum {
   EPISODE = '[Episode] Episode',
@@ -12,7 +13,7 @@ export const episodeAction = createAction(EpisodeActionsEnum.EPISODE);
 
 export const episodeSuccessAction = createAction(
   EpisodeActionsEnum.EPISODE_SUCCESS,
-  props<{ results: EpisodeInterface[] }>()
+  props<{ results: EpisodeInterface[]; info: ResponseInfoInterface }>()
 );
 
 export const episodeFailureAction = createAction(

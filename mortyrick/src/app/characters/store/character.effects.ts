@@ -11,6 +11,7 @@ import { CharacterInterface } from './../types/character.interface';
 import { CharacterService } from '../services/character.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
+import { CharacterResponseType } from '../types/characterResponse.type';
 
 @Injectable()
 export class CharacterEffect {
@@ -24,8 +25,8 @@ export class CharacterEffect {
       ofType(characterAction),
       switchMap(() =>
         this.characterService.getCharacters().pipe(
-          map((results: CharacterInterface[]) =>
-            characterSuccessAction({ results })
+          map(({ results, info }: CharacterResponseType) =>
+            characterSuccessAction({ results, info })
           ),
           catchError((error: HttpErrorResponse) =>
             of(characterFailureAction({ error }))

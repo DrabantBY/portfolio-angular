@@ -7,10 +7,10 @@ import {
   locationFailureAction,
   locationSuccessAction,
 } from './location.actions';
-import { LocationInterface } from './../types/location.interface';
 import { LocationService } from '../services/location.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
+import { LocationResponseType } from '../types/locationResponse.type';
 
 @Injectable()
 export class LocationEffect {
@@ -24,8 +24,8 @@ export class LocationEffect {
       ofType(locationAction),
       switchMap(() =>
         this.locationService.getLocations().pipe(
-          map((results: LocationInterface[]) =>
-            locationSuccessAction({ results })
+          map(({ results, info }: LocationResponseType) =>
+            locationSuccessAction({ results, info })
           ),
           catchError((error: HttpErrorResponse) =>
             of(locationFailureAction({ error }))

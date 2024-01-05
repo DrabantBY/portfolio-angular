@@ -5,9 +5,11 @@ import { AppStateInterface } from '../../../shared/types/appState.interface';
 import { locationAction } from '../../store/location.actions';
 import { Store, select } from '@ngrx/store';
 import {
+  locationInfoSelector,
   locationIsLoadingSelector,
   locationResultsSelector,
 } from '../../store/location.selectors';
+import { ResponseInfoInterface } from '../../../shared/types/responseInfo.interface';
 
 @Component({
   selector: 'app-location',
@@ -17,6 +19,7 @@ import {
 export class LocationComponent {
   location$: Observable<LocationInterface[] | null>;
   isLoading$: Observable<boolean>;
+  info$: Observable<ResponseInfoInterface | null>;
 
   constructor(private readonly store: Store<AppStateInterface>) {}
 
@@ -24,5 +27,6 @@ export class LocationComponent {
     this.store.dispatch(locationAction());
     this.isLoading$ = this.store.pipe(select(locationIsLoadingSelector));
     this.location$ = this.store.pipe(select(locationResultsSelector));
+    this.info$ = this.store.pipe(select(locationInfoSelector));
   }
 }

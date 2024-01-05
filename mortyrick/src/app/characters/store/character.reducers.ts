@@ -9,6 +9,7 @@ import {
 const initialState: CharacterStateInterface = {
   isLoading: false,
   results: null,
+  info: null,
 };
 
 export const characterReducer = createReducer(
@@ -26,6 +27,7 @@ export const characterReducer = createReducer(
       ...state,
       isLoading: false,
       results: action.results,
+      info: action.info,
     })
   ),
   on(

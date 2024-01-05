@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { EpisodeResponseType } from '../types/episodeResponse.type';
-import { EpisodeInterface } from '../types/episode.interface';
+
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 
@@ -13,15 +13,8 @@ export class EpisodeService {
     private readonly router: Router
   ) {}
 
-  getEpisodes(): Observable<EpisodeInterface[]> {
+  getEpisodes(): Observable<EpisodeResponseType> {
     const url = `${environment.baseURL}${this.router.url}`;
-    return this.http
-      .get<EpisodeResponseType>(url)
-      .pipe(
-        map(
-          (response: EpisodeResponseType): EpisodeInterface[] =>
-            response.results
-        )
-      );
+    return this.http.get<EpisodeResponseType>(url);
   }
 }

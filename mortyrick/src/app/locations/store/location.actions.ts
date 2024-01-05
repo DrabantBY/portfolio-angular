@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { LocationInterface } from './../types/location.interface';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ResponseInfoInterface } from '../../shared/types/responseInfo.interface';
 
 export enum LocationActionsEnum {
   LOCATION = '[Location] Location',
@@ -12,7 +13,7 @@ export const locationAction = createAction(LocationActionsEnum.LOCATION);
 
 export const locationSuccessAction = createAction(
   LocationActionsEnum.LOCATION_SUCCESS,
-  props<{ results: LocationInterface[] }>()
+  props<{ results: LocationInterface[]; info: ResponseInfoInterface }>()
 );
 
 export const locationFailureAction = createAction(

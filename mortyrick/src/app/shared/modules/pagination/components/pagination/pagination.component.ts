@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ResponseInfoInterface } from '../../../../types/responseInfo.interface';
 
 @Component({
   selector: 'app-pagination',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './pagination.component.scss',
 })
 export class PaginationComponent {
+  @Input({ required: true }) info: ResponseInfoInterface | null;
   handlePage(event: any): void {
     console.log(event);
   }

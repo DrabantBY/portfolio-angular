@@ -2,6 +2,7 @@ import { createSelector } from '@ngrx/store';
 import { CharacterStateInterface } from '../types/characterState.interface';
 import { AppStateInterface } from './../../shared/types/appState.interface';
 import { CharacterInterface } from '../types/character.interface';
+import { ResponseInfoInterface } from '../../shared/types/responseInfo.interface';
 
 export const characterSelector = (
   state: AppStateInterface
@@ -15,4 +16,9 @@ export const characterIsLoadingSelector = createSelector(
 export const characterResultsSelector = createSelector(
   characterSelector,
   (state: CharacterStateInterface): CharacterInterface[] | null => state.results
+);
+
+export const characterInfoSelector = createSelector(
+  characterSelector,
+  (state: CharacterStateInterface): ResponseInfoInterface | null => state.info
 );
