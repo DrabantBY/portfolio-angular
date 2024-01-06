@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+import { routerNavigationAction } from '@ngrx/router-store';
 import { CharacterStateInterface } from '../types/characterState.interface';
 import {
   characterAction,
@@ -36,5 +37,6 @@ export const characterReducer = createReducer(
       ...state,
       isLoading: false,
     })
-  )
+  ),
+  on(routerNavigationAction, (): CharacterStateInterface => initialState)
 );

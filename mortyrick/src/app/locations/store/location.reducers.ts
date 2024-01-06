@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+import { routerNavigationAction } from '@ngrx/router-store';
 import { LocationStateInterface } from '../types/locationState.interface';
 import {
   locationAction,
@@ -36,5 +37,6 @@ export const locationReducer = createReducer(
       ...state,
       isLoading: false,
     })
-  )
+  ),
+  on(routerNavigationAction, (): LocationStateInterface => initialState)
 );

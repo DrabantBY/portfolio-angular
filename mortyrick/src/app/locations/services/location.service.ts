@@ -15,6 +15,7 @@ export class LocationService {
 
   getLocations(): Observable<LocationResponseType> {
     const url = `${environment.baseURL}${this.router.url}`;
+    console.log(this.router.url);
     return this.http.get<LocationResponseType>(url);
   }
 }

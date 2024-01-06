@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderModule } from './shared/modules/header/header.module';
@@ -35,9 +36,10 @@ import { environment } from '../environments/environment.development';
     FooterModule,
     ErrorModule,
     PaginationModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ router: routerReducer }, {}),
     EffectsModule.forRoot([]),
     environment.imports,
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

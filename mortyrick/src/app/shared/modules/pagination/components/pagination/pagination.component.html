@@ -1,7 +1,9 @@
 <mat-paginator
+  [disabled]="!info"
   [length]="info?.count"
-  [pageSize]="20"
+  pageSize="20"
   showFirstLastButtons
-  (page)="handlePage($event)"
+  hidePageSize="true"
+  (page)="onNavigateToPage($event)"
 >
 </mat-paginator>

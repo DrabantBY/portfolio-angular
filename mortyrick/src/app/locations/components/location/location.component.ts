@@ -10,6 +10,14 @@ import {
   locationResultsSelector,
 } from '../../store/location.selectors';
 import { ResponseInfoInterface } from '../../../shared/types/responseInfo.interface';
+import {
+  PRIMARY_OUTLET,
+  Router,
+  UrlSegment,
+  UrlSegmentGroup,
+  UrlTree,
+} from '@angular/router';
+import { environment } from '../../../../environments/environment.development';
 
 @Component({
   selector: 'app-location',

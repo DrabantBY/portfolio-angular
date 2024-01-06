@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+import { routerNavigationAction } from '@ngrx/router-store';
 import { EpisodeStateInterface } from '../types/episodeState.interface';
 import {
   episodeAction,
@@ -36,5 +37,6 @@ export const episodeReducer = createReducer(
       ...state,
       isLoading: false,
     })
-  )
+  ),
+  on(routerNavigationAction, (): EpisodeStateInterface => initialState)
 );
