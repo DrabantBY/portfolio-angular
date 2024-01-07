@@ -1,7 +1,12 @@
+<h1 *ngIf="isLoading$ | async as isLoading">Loading...</h1>
 <ul>
   @for(location of (location$ | async); track location.id) {
   <li>{{ location.name }}</li>
   }
 </ul>
 
-<app-pagination [info]="info$ | async"></app-pagination>
+<app-pagination
+  [isLoading]="isLoading$ | async"
+  [info]="info$ | async"
+  [currentPageIndex]="currentPageIndex"
+></app-pagination>

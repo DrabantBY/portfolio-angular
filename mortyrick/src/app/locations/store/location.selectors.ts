@@ -1,8 +1,9 @@
 import { createSelector } from '@ngrx/store';
-import { AppStateInterface } from '../../shared/types/appState.interface';
+
 import { LocationStateInterface } from '../types/locationState.interface';
 import { LocationInterface } from '../types/location.interface';
 import { ResponseInfoInterface } from '../../shared/types/responseInfo.interface';
+import { AppStateInterface } from '../../shared/types/appState.interface';
 
 export const locationSelector = (
   state: AppStateInterface

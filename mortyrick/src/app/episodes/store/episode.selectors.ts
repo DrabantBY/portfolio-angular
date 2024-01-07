@@ -1,7 +1,8 @@
 import { createSelector } from '@ngrx/store';
+
+import { EpisodeInterface } from '../../episodes/types/episode.interface';
 import { EpisodeStateInterface } from '../types/episodeState.interface';
 import { AppStateInterface } from '../../shared/types/appState.interface';
-import { EpisodeInterface } from '../../episodes/types/episode.interface';
 import { ResponseInfoInterface } from '../../shared/types/responseInfo.interface';
 
 export const episodeSelector = (

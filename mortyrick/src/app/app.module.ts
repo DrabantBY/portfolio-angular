@@ -11,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderModule } from './shared/modules/header/header.module';
 import { MainModule } from './shared/modules/main/main.module';
 import { FooterModule } from './shared/modules/footer/footer.module';
-import { PaginationModule } from './shared/modules/pagination/pagination.module';
 
 import { CharactersModule } from './characters/characters.module';
 import { EpisodesModule } from './episodes/episodes.module';
@@ -35,7 +34,6 @@ import { environment } from '../environments/environment.development';
     MainModule,
     FooterModule,
     ErrorModule,
-    PaginationModule,
     StoreModule.forRoot({ router: routerReducer }, {}),
     EffectsModule.forRoot([]),
     environment.imports,

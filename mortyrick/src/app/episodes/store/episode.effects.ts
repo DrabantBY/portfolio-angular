@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs/internal/observable/of';
+
 import { map, switchMap, catchError } from 'rxjs/operators';
+import { of, throwError } from 'rxjs';
+
 import {
   episodeAction,
   episodeFailureAction,
@@ -9,8 +13,7 @@ import {
 } from './episode.actions';
 
 import { EpisodeService } from '../services/episode.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
+
 import { EpisodeResponseType } from '../types/episodeResponse.type';
 
 @Injectable()

@@ -1,7 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { EpisodeInterface } from '../types/episode.interface';
+
 import { createAction, props } from '@ngrx/store';
+
 import { ResponseInfoInterface } from '../../shared/types/responseInfo.interface';
+
+import { EpisodeInterface } from '../types/episode.interface';
 
 export enum EpisodeActionsEnum {
   EPISODE = '[Episode] Episode',

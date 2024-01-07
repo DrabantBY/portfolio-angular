@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs/internal/observable/of';
+
 import { map, switchMap, catchError } from 'rxjs/operators';
+import { of, throwError } from 'rxjs';
+
 import {
   locationAction,
   locationFailureAction,
   locationSuccessAction,
 } from './location.actions';
+
 import { LocationService } from '../services/location.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
+
 import { LocationResponseType } from '../types/locationResponse.type';
 
 @Injectable()

@@ -1,11 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { routerNavigationAction } from '@ngrx/router-store';
-import { EpisodeStateInterface } from '../types/episodeState.interface';
+
 import {
   episodeAction,
   episodeFailureAction,
   episodeSuccessAction,
 } from './episode.actions';
+
+import { EpisodeStateInterface } from '../types/episodeState.interface';
 
 const initialState: EpisodeStateInterface = {
   results: null,

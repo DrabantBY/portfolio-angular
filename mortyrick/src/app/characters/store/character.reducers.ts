@@ -1,11 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { routerNavigationAction } from '@ngrx/router-store';
-import { CharacterStateInterface } from '../types/characterState.interface';
+
 import {
   characterAction,
   characterFailureAction,
   characterSuccessAction,
 } from './character.actions';
+
+import { CharacterStateInterface } from '../types/characterState.interface';
 
 const initialState: CharacterStateInterface = {
   isLoading: false,

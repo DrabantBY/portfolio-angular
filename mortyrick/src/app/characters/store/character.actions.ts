@@ -1,7 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { CharacterInterface } from './../types/character.interface';
+
 import { createAction, props } from '@ngrx/store';
+
 import { ResponseInfoInterface } from '../../shared/types/responseInfo.interface';
+
+import { CharacterInterface } from './../types/character.interface';
 
 export enum CharacterActionsEnum {
   CHARACTER = '[Character] Character',

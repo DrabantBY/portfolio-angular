@@ -1,11 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { routerNavigationAction } from '@ngrx/router-store';
-import { LocationStateInterface } from '../types/locationState.interface';
+
 import {
   locationAction,
   locationFailureAction,
   locationSuccessAction,
 } from './location.actions';
+
+import { LocationStateInterface } from '../types/locationState.interface';
 
 const initialState: LocationStateInterface = {
   results: null,

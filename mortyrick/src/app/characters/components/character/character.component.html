@@ -8,3 +8,9 @@
   </li>
   }
 </ul>
+
+<app-pagination
+  [isLoading]="isLoading$ | async"
+  [info]="info$ | async"
+  [currentPageIndex]="currentPageIndex"
+></app-pagination>

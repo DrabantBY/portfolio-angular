@@ -5,3 +5,10 @@
   </li>
   }
 </ul>
+
+<app-pagination
+  [isLoading]="isLoading$ | async"
+  [currentPageIndex]="currentPageIndex"
+  [info]="info$ | async"
+>
+</app-pagination>

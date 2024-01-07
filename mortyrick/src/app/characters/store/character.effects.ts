@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs/internal/observable/of';
+
 import { map, switchMap, catchError } from 'rxjs/operators';
+import { of, throwError } from 'rxjs';
+
 import {
   characterAction,
   characterFailureAction,
   characterSuccessAction,
 } from './character.actions';
-import { CharacterInterface } from './../types/character.interface';
+
 import { CharacterService } from '../services/character.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
 import { CharacterResponseType } from '../types/characterResponse.type';
 
 @Injectable()

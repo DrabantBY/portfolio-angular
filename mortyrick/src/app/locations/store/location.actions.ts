@@ -1,6 +1,8 @@
-import { createAction, props } from '@ngrx/store';
-import { LocationInterface } from './../types/location.interface';
 import { HttpErrorResponse } from '@angular/common/http';
+
+import { createAction, props } from '@ngrx/store';
+
+import { LocationInterface } from './../types/location.interface';
 import { ResponseInfoInterface } from '../../shared/types/responseInfo.interface';
 
 export enum LocationActionsEnum {
