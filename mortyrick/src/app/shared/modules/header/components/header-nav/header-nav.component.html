@@ -12,6 +12,7 @@
     routerLinkActive
     #rla="routerLinkActive"
     [active]="rla.isActive"
+    [routerLinkActiveOptions]="activeMatchOptions"
   >
     {{ link + "s" | uppercase }}
   </a>
