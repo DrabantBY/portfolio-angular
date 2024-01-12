@@ -64,10 +64,3 @@ body {
     @include mat.all-component-colors($app-light-theme);
   }
 }
-
-app-root {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}

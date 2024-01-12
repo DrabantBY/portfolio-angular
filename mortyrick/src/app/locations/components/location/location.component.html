@@ -1,5 +1,4 @@
-<h1 *ngIf="isLoading$ | async as isLoading">Loading...</h1>
-<ul>
+<ul class="list">
   @for(location of (location$ | async); track location.id) {
   <li>{{ location.name }}</li>
   }

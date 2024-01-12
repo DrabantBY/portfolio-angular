@@ -1,2 +1,12 @@
-<h1>{{ error.statusCode }}</h1>
-<h2>{{ error.statusText }}</h2>
+<mat-card>
+  <mat-card-header>
+    <button mat-card-avatar mat-icon-button color="warn">
+      <mat-icon>report</mat-icon>
+    </button>
+    <mat-card-title>
+      {{ error.statusCode }}
+    </mat-card-title>
+    <mat-card-subtitle>{{ error.statusText | uppercase }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="/assets/oops.png" alt="Oops!" />
+</mat-card>

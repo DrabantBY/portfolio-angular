@@ -1,4 +1,4 @@
-<mat-drawer-container class="app-main" (backdropClick)="closeDrawer()">
+<mat-drawer-container (backdropClick)="closeDrawer()">
   @if(isSmallSize$ | async) {
   <mat-drawer
     mode="over"
