@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { ServerErrorInterface } from '../../types/serverError.interface';
+import { ErrorInterface } from '../../types/error.interface';
 
 @Component({
   selector: 'app-error',
@@ -8,11 +8,11 @@ import { ServerErrorInterface } from '../../types/serverError.interface';
   styleUrl: './error.component.scss',
 })
 export class ErrorComponent implements OnInit {
-  error: ServerErrorInterface;
+  error: ErrorInterface;
 
   constructor(private readonly location: Location) {}
 
   ngOnInit(): void {
-    this.error = <ServerErrorInterface>this.location.getState();
+    this.error = <ErrorInterface>this.location.getState();
   }
 }

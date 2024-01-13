@@ -1,30 +1,29 @@
 import { Injectable, ErrorHandler, NgZone } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { ErrorInterface } from '../types/error.interface';
 
 @Injectable()
 export class GlobalClientErrorService implements ErrorHandler {
   constructor(private readonly router: Router, private readonly zone: NgZone) {}
 
   handleError(error: Error | HttpErrorResponse): void {
-    const navigationExtras: NavigationExtras = {
-      state: undefined,
-    };
+    let state: ErrorInterface;
 
     if (error instanceof HttpErrorResponse) {
-      navigationExtras.state = {
-        statusCode: error.status,
-        statusText: error.error?.error ?? error.statusText,
+      state = {
+        name: `${error.name} ${error.status}`,
+        message: error.error?.error ?? error.statusText ?? error.message,
       };
     } else {
-      navigationExtras.state = {
-        statusCode: error.name,
-        statusText: error.message,
+      state = {
+        name: error.name,
+        message: error.message,
       };
     }
 
     this.zone.run(() => {
-      this.router.navigate(['error'], navigationExtras);
+      this.router.navigate(['error'], { state });
     });
   }
 }
