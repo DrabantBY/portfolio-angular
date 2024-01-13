@@ -1,3 +1,6 @@
+@if(isLoading$ | async) {
+<app-spinner></app-spinner>
+}@else {
 <ul class="list">
   @for(character of character$ | async; track character.id) {
   <li>
@@ -8,6 +11,7 @@
   </li>
   }
 </ul>
+}
 
 <app-pagination
   [isLoading]="isLoading$ | async"

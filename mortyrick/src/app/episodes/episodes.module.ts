@@ -9,6 +9,7 @@ import { EpisodeService } from './services/episode.service';
 import { episodeReducer } from './store/episode.reducers';
 import { episodeEffect } from './store/episode.effects';
 import { PaginationModule } from '../shared/modules/pagination/pagination.module';
+import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 
 const routes = [
   {
@@ -24,6 +25,7 @@ const routes = [
     StoreModule.forFeature('episodes', episodeReducer),
     EffectsModule.forFeature(episodeEffect),
     PaginationModule,
+    SpinnerComponent,
   ],
   declarations: [EpisodeComponent],
   providers: [EpisodeService],

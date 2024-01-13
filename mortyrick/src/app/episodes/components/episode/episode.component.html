@@ -1,3 +1,6 @@
+@if(isLoading$ | async) {
+<app-spinner></app-spinner>
+}@else {
 <ul class="list">
   @for(episode of (episode$ | async); track episode.id) {
   <li>
@@ -5,6 +8,7 @@
   </li>
   }
 </ul>
+}
 
 <app-pagination
   [isLoading]="isLoading$ | async"

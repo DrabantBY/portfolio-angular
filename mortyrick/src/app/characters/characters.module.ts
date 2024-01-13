@@ -14,6 +14,7 @@ import { CharacterEffect } from './store/character.effects';
 
 import { RoutesEnum } from '../shared/types/routes.enum';
 import { PaginationModule } from '../shared/modules/pagination/pagination.module';
+import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 
 const routes = [
   {
@@ -29,6 +30,7 @@ const routes = [
     StoreModule.forFeature('characters', characterReducer),
     EffectsModule.forFeature(CharacterEffect),
     PaginationModule,
+    SpinnerComponent,
   ],
   declarations: [CharacterComponent],
   providers: [CharacterService],

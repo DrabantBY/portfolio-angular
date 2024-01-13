@@ -14,6 +14,7 @@ import { locationReducer } from './store/location.reducers';
 
 import { RoutesEnum } from '../shared/types/routes.enum';
 import { PaginationModule } from '../shared/modules/pagination/pagination.module';
+import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 
 const routes = [
   {
@@ -29,6 +30,7 @@ const routes = [
     StoreModule.forFeature('locations', locationReducer),
     EffectsModule.forFeature(LocationEffect),
     PaginationModule,
+    SpinnerComponent,
   ],
   declarations: [LocationComponent],
   providers: [LocationService],
