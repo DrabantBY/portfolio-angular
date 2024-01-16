@@ -1,6 +1,7 @@
 <mat-paginator
+  color="warn"
   [disabled]="isLoading"
-  [length]="info?.count"
+  [length]="info?.count ?? 0"
   pageSize="20"
   [pageIndex]="currentPageIndex - 1"
   showFirstLastButtons

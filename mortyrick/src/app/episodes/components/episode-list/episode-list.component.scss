@@ -1,21 +1,5 @@
+@use "../../../../mixins.scss";
+
 :host {
-  padding-inline: 1.6rem;
-  flex-grow: 1;
-
-  .episode-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  mat-card {
-    min-width: fit-content;
-    flex-grow: 1;
-  }
-
-  button[mat-icon-button] {
-    mat-icon {
-      scale: 1.4;
-    }
-  }
+  @include mixins.page-content($class-name: ".episode-list", $icon-scale: 1.4);
 }

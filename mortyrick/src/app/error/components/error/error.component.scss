@@ -9,13 +9,13 @@
 
     mat-card-header {
       align-items: center;
-    }
 
-    button[mat-card-avatar] {
-      margin-block-end: 0;
+      button[mat-card-avatar] {
+        margin-block-end: 0;
 
-      mat-icon {
-        scale: 2;
+        mat-icon {
+          scale: 2;
+        }
       }
     }
   }
