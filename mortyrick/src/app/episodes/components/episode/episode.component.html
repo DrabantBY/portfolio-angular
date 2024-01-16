@@ -1,13 +1,7 @@
 @if(isLoading$ | async) {
 <app-spinner></app-spinner>
 }@else {
-<ul class="list">
-  @for(episode of (episode$ | async); track episode.id) {
-  <li>
-    {{ episode.name }}
-  </li>
-  }
-</ul>
+<app-episode-list [episodes]="episode$ | async"></app-episode-list>
 }
 
 <app-pagination

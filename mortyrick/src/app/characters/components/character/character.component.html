@@ -1,16 +1,7 @@
 @if(isLoading$ | async) {
 <app-spinner></app-spinner>
 }@else {
-<ul class="list">
-  @for(character of character$ | async; track character.id) {
-  <li>
-    <figure>
-      <img [src]="character.image" [alt]="character.name" />
-      <figcaption>{{ character.name }}</figcaption>
-    </figure>
-  </li>
-  }
-</ul>
+<app-character-list [characters]="character$ | async"></app-character-list>
 }
 
 <app-pagination

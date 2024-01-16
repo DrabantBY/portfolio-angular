@@ -1,0 +1,11 @@
+<div class="character-list">
+  @for(character of characters ; track character.id) {
+  <mat-card>
+    <mat-card-header>
+      <img mat-card-avatar [src]="character.image" [alt]="character.name" />
+      <mat-card-title>{{ character.name }}</mat-card-title>
+      <mat-card-subtitle>{{ character.species }}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  }
+</div>

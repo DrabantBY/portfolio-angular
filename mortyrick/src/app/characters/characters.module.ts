@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -15,6 +16,7 @@ import { CharacterEffect } from './store/character.effects';
 import { RoutesEnum } from '../shared/types/routes.enum';
 import { PaginationModule } from '../shared/modules/pagination/pagination.module';
 import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
+import { CharacterListComponent } from './components/character-list/character-list.component';
 
 const routes = [
   {
@@ -31,8 +33,9 @@ const routes = [
     EffectsModule.forFeature(CharacterEffect),
     PaginationModule,
     SpinnerComponent,
+    MatCardModule,
   ],
-  declarations: [CharacterComponent],
+  declarations: [CharacterComponent, CharacterListComponent],
   providers: [CharacterService],
 })
 export class CharactersModule {}

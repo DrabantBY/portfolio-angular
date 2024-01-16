@@ -15,7 +15,7 @@ export class CharacterService {
   ) {}
 
   getCharacters(): Observable<CharacterResponseType> {
-    const url = `${environment.baseURL}/character/1000`;
+    const url = `${environment.baseURL}${this.router.url}`;
     return this.http.get<CharacterResponseType>(url);
   }
 }

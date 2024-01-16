@@ -1,0 +1,14 @@
+<div class="episode-list">
+  @for(episode of episodes; track episode.id) {
+  <mat-card>
+    <mat-card-header>
+      <button mat-card-avatar mat-icon-button color="primary">
+        <mat-icon>camera_roll</mat-icon>
+      </button>
+
+      <mat-card-title>{{ episode.episode }}</mat-card-title>
+      <mat-card-subtitle>{{ episode.name }}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  }
+</div>
