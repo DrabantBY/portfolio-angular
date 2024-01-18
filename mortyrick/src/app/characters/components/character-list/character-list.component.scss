@@ -1,8 +1,5 @@
 @use "../../../../mixins.scss";
 
 :host {
-  @include mixins.page-content(
-    $class-name: ".character-list",
-    $icon-scale: null
-  );
+  @include mixins.page-content($icon-scale: null);
 }

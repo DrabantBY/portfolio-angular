@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -34,6 +35,7 @@ const routes = [
     PaginationModule,
     SpinnerComponent,
     MatCardModule,
+    MatGridListModule,
   ],
   declarations: [CharacterComponent, CharacterListComponent],
   providers: [CharacterService],

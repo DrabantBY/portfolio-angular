@@ -1,5 +1,5 @@
 @use "../../../../mixins.scss";
 
 :host {
-  @include mixins.page-content($class-name: ".location-list", $icon-scale: 1.6);
+  @include mixins.page-content($icon-scale: 1.6);
 }

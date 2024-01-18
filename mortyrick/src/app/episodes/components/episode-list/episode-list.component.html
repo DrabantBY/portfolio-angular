@@ -1,14 +1,16 @@
-<div class="episode-list">
+<mat-grid-list [cols]="col$ | async" rowHeight="3:1" gutterSize="1rem">
   @for(episode of episodes; track episode.id) {
-  <mat-card>
-    <mat-card-header>
-      <button mat-card-avatar mat-icon-button color="primary">
-        <mat-icon>camera_roll</mat-icon>
-      </button>
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-header>
+        <button mat-card-avatar mat-icon-button color="primary">
+          <mat-icon>camera_roll</mat-icon>
+        </button>
+        <mat-card-title>{{ episode.episode }}</mat-card-title>
+        <mat-card-subtitle>{{ episode.name }}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </mat-grid-tile>
 
-      <mat-card-title>{{ episode.episode }}</mat-card-title>
-      <mat-card-subtitle>{{ episode.name }}</mat-card-subtitle>
-    </mat-card-header>
-  </mat-card>
   }
-</div>
+</mat-grid-list>

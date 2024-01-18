@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -38,6 +39,7 @@ const routes = [
     MatCardModule,
     MatIconModule,
     MatButtonModule,
+    MatGridListModule,
   ],
   declarations: [EpisodeComponent, EpisodeListComponent],
   providers: [EpisodeService],

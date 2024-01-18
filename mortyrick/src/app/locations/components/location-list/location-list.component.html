@@ -1,13 +1,15 @@
-<div class="location-list">
-  @for(location of locations; track location.id) {<mat-card>
-    <mat-card-header>
-      <button mat-card-avatar mat-icon-button color="primary">
-        <mat-icon>language</mat-icon>
-      </button>
-
-      <mat-card-title>{{ location.type }}</mat-card-title>
-      <mat-card-subtitle>{{ location.name }}</mat-card-subtitle>
-    </mat-card-header>
-  </mat-card>
+<mat-grid-list [cols]="col$ | async" rowHeight="3:1" gutterSize="1rem">
+  @for(location of locations; track location.id) {
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-header>
+        <button mat-card-avatar mat-icon-button color="primary">
+          <mat-icon>language</mat-icon>
+        </button>
+        <mat-card-title>{{ location.type }}</mat-card-title>
+        <mat-card-subtitle>{{ location.name }}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </mat-grid-tile>
   }
-</div>
+</mat-grid-list>

@@ -1,11 +1,13 @@
-<div class="character-list">
+<mat-grid-list [cols]="col$ | async" rowHeight="3:1" gutterSize="1rem">
   @for(character of characters ; track character.id) {
-  <mat-card>
-    <mat-card-header>
-      <img mat-card-avatar [src]="character.image" [alt]="character.name" />
-      <mat-card-title>{{ character.species }}</mat-card-title>
-      <mat-card-subtitle>{{ character.name }}</mat-card-subtitle>
-    </mat-card-header>
-  </mat-card>
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-header>
+        <img mat-card-avatar [src]="character.image" [alt]="character.name" />
+        <mat-card-title>{{ character.species }}</mat-card-title>
+        <mat-card-subtitle>{{ character.name }}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </mat-grid-tile>
   }
-</div>
+</mat-grid-list>
