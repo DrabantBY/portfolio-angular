@@ -1,3 +1,8 @@
+<app-filter
+  [options]="['name', 'species', 'type']"
+  [label]="'search by...'"
+></app-filter>
+
 @if(isLoading$ | async) {
 <app-spinner></app-spinner>
 }@else {

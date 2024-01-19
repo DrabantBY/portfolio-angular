@@ -18,6 +18,7 @@ import { RoutesEnum } from '../shared/types/routes.enum';
 import { PaginationModule } from '../shared/modules/pagination/pagination.module';
 import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 import { CharacterListComponent } from './components/character-list/character-list.component';
+import { FilterModule } from '../shared/modules/filter/filter.module';
 
 const routes = [
   {
@@ -36,6 +37,7 @@ const routes = [
     SpinnerComponent,
     MatCardModule,
     MatGridListModule,
+    FilterModule,
   ],
   declarations: [CharacterComponent, CharacterListComponent],
   providers: [CharacterService],
