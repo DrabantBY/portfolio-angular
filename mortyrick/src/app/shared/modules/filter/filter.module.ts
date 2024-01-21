@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { FilterComponent } from './components/filter/filter.component';
+import { SearchFilterComponent } from './components/search-filter/search-filter.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { FilterComponent } from './components/filter/filter.component';
     MatDividerModule,
     MatToolbarModule,
   ],
-  declarations: [FilterComponent],
+  declarations: [FilterComponent, SearchFilterComponent],
   exports: [FilterComponent],
 })
 export class FilterModule {}

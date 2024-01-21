@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+mat-select {
+  max-width: 150px;
+}
+
+mat-divider {
+  height: 3rem;
+  color: currentColor;
+}

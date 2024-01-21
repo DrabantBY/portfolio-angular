@@ -1,16 +1,8 @@
-<mat-toolbar>
-  <mat-form-field color="primary" appearance="outline">
-    <mat-label>{{ label }}</mat-label>
-    <mat-icon matPrefix>search</mat-icon>
-    <mat-select (selectionChange)="handler($event)" [value]="value">
-      <mat-option>none</mat-option>
-      @for (option of options; track option) {
-      <mat-option [value]="option">{{ option }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <input matInput type="text" [(ngModel)]="value" [value]="value" />
-  </mat-form-field>
-</mat-toolbar>
+<mat-form-field color="primary" appearance="outline" class="filter-bar">
+  <mat-label>search by...</mat-label>
+  <mat-icon matPrefix>search</mat-icon>
+  <app-search-filter
+    placeholder="search value..."
+    [required]="true"
+  ></app-search-filter>
+</mat-form-field>

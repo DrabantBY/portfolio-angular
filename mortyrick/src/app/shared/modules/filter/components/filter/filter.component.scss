@@ -1,7 +1,12 @@
-mat-icon {
-  scale: 1.4;
+:host {
+  display: flex;
+  margin-block-start: 2rem;
+
+  .filter-bar {
+    flex-grow: 1;
+  }
 }
 
-mat-form-field {
-  width: 180px;
+mat-icon {
+  scale: 1.4;
 }
