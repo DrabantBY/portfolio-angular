@@ -22,6 +22,8 @@ export class GlobalClientErrorService implements ErrorHandler {
       };
     }
 
+    console.log(state);
+
     this.zone.run(() => {
       this.router.navigate(['error'], { state });
     });

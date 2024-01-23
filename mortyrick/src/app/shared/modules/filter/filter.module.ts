@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -10,12 +11,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { FilterComponent } from './components/filter/filter.component';
-import { SearchFilterComponent } from './components/search-filter/search-filter.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
+    // ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
@@ -24,7 +25,7 @@ import { SearchFilterComponent } from './components/search-filter/search-filter.
     MatDividerModule,
     MatToolbarModule,
   ],
-  declarations: [FilterComponent, SearchFilterComponent],
+  declarations: [FilterComponent, SearchComponent],
   exports: [FilterComponent],
 })
 export class FilterModule {}
