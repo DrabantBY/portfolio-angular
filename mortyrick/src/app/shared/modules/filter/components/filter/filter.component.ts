@@ -9,14 +9,15 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class FilterComponent implements OnInit {
   constructor(private readonly fb: FormBuilder) {}
 
-  // form: FormGroup;
+  form: FormGroup;
 
   ngOnInit(): void {
-    // this.form = this.fb.group({
-    //   searchParam: new FormControl(),
-    //   searchValue: new FormControl(),
-    //   search: new FormControl(),
-    // });
+    this.form = this.fb.group({
+      search: new FormControl({
+        searchParam: '',
+        searchValue: '',
+      }),
+    });
   }
 
   onSubmit() {

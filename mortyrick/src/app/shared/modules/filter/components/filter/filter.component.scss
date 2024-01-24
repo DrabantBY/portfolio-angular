@@ -10,6 +10,16 @@
 //   margin-block-end: 2.4rem;
 // }
 
+:host {
+  display: block;
+}
+
 mat-icon {
   scale: 1.4;
+}
+.search {
+  display: block;
+  width: 50rem;
+  margin-inline: auto;
+  margin-block: 2rem;
 }

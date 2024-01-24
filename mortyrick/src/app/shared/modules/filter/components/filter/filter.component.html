@@ -18,9 +18,10 @@
   </mat-form-field>
   <button type="submit">submit</button>
 </form> -->
-
-<mat-form-field color="primary" appearance="outline" class="search">
-  <mat-label>SEARCH BY...</mat-label>
-  <mat-icon matPrefix>search</mat-icon>
-  <app-search></app-search>
-</mat-form-field>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field color="primary" appearance="outline" class="search">
+    <mat-label>SEARCH</mat-label>
+    <mat-icon matPrefix>search</mat-icon>
+    <app-search placeholder="value..." formControlName="search"></app-search>
+  </mat-form-field>
+</form>

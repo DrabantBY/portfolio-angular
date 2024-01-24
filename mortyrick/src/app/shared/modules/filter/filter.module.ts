@@ -16,7 +16,7 @@ import { SearchComponent } from './components/search/search.component';
 @NgModule({
   imports: [
     CommonModule,
-    // ReactiveFormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,

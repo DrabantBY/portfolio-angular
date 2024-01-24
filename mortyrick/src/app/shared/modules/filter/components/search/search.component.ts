@@ -1,4 +1,11 @@
-import { Component, HostBinding, Input, OnDestroy } from '@angular/core';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import {
+  Component,
+  HostBinding,
+  Input,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { NgControl, AbstractControlDirective } from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { Subject } from 'rxjs';
@@ -15,11 +22,16 @@ interface SearchInputInterface {
   providers: [{ provide: MatFormFieldControl, useExisting: SearchComponent }],
 })
 export class SearchComponent
-  implements MatFormFieldControl<SearchInputInterface>, OnDestroy
+  implements MatFormFieldControl<SearchInputInterface>, OnInit, OnDestroy
 {
   static nextId = 0;
 
   @HostBinding() id: string = `search-input-${SearchComponent.nextId++}`;
+
+  @HostBinding('class.floating')
+  get shouldLabelFloat() {
+    return true;
+  }
 
   stateChanges: Subject<void> = new Subject<void>();
 
@@ -39,23 +51,29 @@ export class SearchComponent
   @Input()
   set placeholder(placeholder: string) {
     this.#placeholder = placeholder;
+    this.stateChanges.next();
   }
   get placeholder() {
     return this.#placeholder;
   }
 
+  @Input() required: boolean;
+  @Input() disabled: boolean;
+
+  focused: boolean = true;
+
+  get empty(): boolean {
+    return !this.#value?.searchParam && !this.#value?.searchValue;
+  }
+
   ngControl: NgControl | AbstractControlDirective | null = null;
-  focused: boolean;
-  empty: boolean;
-  shouldLabelFloat: boolean;
-  required: boolean;
-  disabled: boolean;
+
   errorState: boolean;
-  controlType?: string | undefined;
-  autofilled?: boolean | undefined;
-  userAriaDescribedBy?: string | undefined;
+
   setDescribedByIds(ids: string[]): void {}
   onContainerClick(event: MouseEvent): void {}
+
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.stateChanges.complete();
