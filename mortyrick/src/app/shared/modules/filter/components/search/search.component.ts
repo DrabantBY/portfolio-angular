@@ -5,8 +5,15 @@ import {
   Input,
   OnDestroy,
   OnInit,
+  Optional,
+  Self,
 } from '@angular/core';
-import { NgControl, AbstractControlDirective } from '@angular/forms';
+import {
+  NgControl,
+  AbstractControlDirective,
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { Subject } from 'rxjs';
 
@@ -22,17 +29,22 @@ interface SearchInputInterface {
   providers: [{ provide: MatFormFieldControl, useExisting: SearchComponent }],
 })
 export class SearchComponent
-  implements MatFormFieldControl<SearchInputInterface>, OnInit, OnDestroy
+  implements
+    OnDestroy,
+    ControlValueAccessor,
+    MatFormFieldControl<SearchInputInterface>
 {
+  constructor(@Optional() @Self() public ngControl: NgControl) {
+    if (this.ngControl) {
+      this.ngControl.valueAccessor = this;
+    }
+  }
+
   static nextId = 0;
 
   @HostBinding() id: string = `search-input-${SearchComponent.nextId++}`;
 
-  @HostBinding('class.floating')
-  get shouldLabelFloat() {
-    return true;
-  }
-
+  shouldLabelFloat: boolean;
   stateChanges: Subject<void> = new Subject<void>();
 
   #value: SearchInputInterface | null;
@@ -66,14 +78,20 @@ export class SearchComponent
     return !this.#value?.searchParam && !this.#value?.searchValue;
   }
 
-  ngControl: NgControl | AbstractControlDirective | null = null;
-
   errorState: boolean;
 
   setDescribedByIds(ids: string[]): void {}
   onContainerClick(event: MouseEvent): void {}
 
-  ngOnInit(): void {}
+  writeValue(obj: SearchInputInterface): void {
+    this.value = obj;
+  }
+
+  registerOnChange(fn: any): void {}
+
+  registerOnTouched(fn: any): void {}
+
+  setDisabledState?(isDisabled: boolean): void {}
 
   ngOnDestroy(): void {
     this.stateChanges.complete();

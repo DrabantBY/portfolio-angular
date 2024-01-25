@@ -14,13 +14,13 @@ export class FilterComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       search: new FormControl({
-        searchParam: '',
+        searchParam: null,
         searchValue: '',
       }),
     });
   }
 
   onSubmit() {
-    // console.log(this.form.value);
+    console.log(this.form.value.search);
   }
 }
