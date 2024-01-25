@@ -14,9 +14,13 @@
   display: block;
 }
 
-mat-icon {
-  scale: 1.4;
+button[matPrefix] {
+  margin-inline: 1rem;
+  mat-icon {
+    scale: 1.4;
+  }
 }
+
 .search {
   display: block;
   width: 50rem;

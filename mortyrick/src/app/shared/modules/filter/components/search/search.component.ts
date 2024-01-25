@@ -1,23 +1,16 @@
-import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   Component,
   HostBinding,
   Input,
   OnDestroy,
-  OnInit,
   Optional,
   Self,
 } from '@angular/core';
-import {
-  NgControl,
-  AbstractControlDirective,
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-} from '@angular/forms';
+import { NgControl, ControlValueAccessor } from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { Subject } from 'rxjs';
 
-interface SearchInputInterface {
+interface SearchFieldInterface {
   searchParam: string;
   searchValue: string;
 }
@@ -32,7 +25,7 @@ export class SearchComponent
   implements
     OnDestroy,
     ControlValueAccessor,
-    MatFormFieldControl<SearchInputInterface>
+    MatFormFieldControl<SearchFieldInterface>
 {
   constructor(@Optional() @Self() public ngControl: NgControl) {
     if (this.ngControl) {
@@ -41,24 +34,34 @@ export class SearchComponent
   }
 
   static nextId = 0;
-
-  @HostBinding() id: string = `search-input-${SearchComponent.nextId++}`;
-
-  shouldLabelFloat: boolean;
+  #value: SearchFieldInterface;
+  #placeholder: string;
   stateChanges: Subject<void> = new Subject<void>();
+  focused: boolean = true;
+  errorState: boolean;
 
-  #value: SearchInputInterface | null;
+  onChange: (value: SearchFieldInterface) => void;
+
+  get empty(): boolean {
+    return !this.#value.searchParam && !this.#value.searchValue;
+  }
+
+  @HostBinding()
+  id: string = `search-input-${SearchComponent.nextId++}`;
+
+  @HostBinding('class.floating')
+  get shouldLabelFloat() {
+    return this.focused || !this.empty;
+  }
 
   @Input()
-  set value(value: SearchInputInterface | null) {
+  set value(value: SearchFieldInterface) {
     this.#value = value;
     this.stateChanges.next();
   }
   get value() {
     return this.#value;
   }
-
-  #placeholder: string;
 
   @Input()
   set placeholder(placeholder: string) {
@@ -72,26 +75,26 @@ export class SearchComponent
   @Input() required: boolean;
   @Input() disabled: boolean;
 
-  focused: boolean = true;
-
-  get empty(): boolean {
-    return !this.#value?.searchParam && !this.#value?.searchValue;
-  }
-
-  errorState: boolean;
-
   setDescribedByIds(ids: string[]): void {}
+
   onContainerClick(event: MouseEvent): void {}
 
-  writeValue(obj: SearchInputInterface): void {
+  writeValue(obj: SearchFieldInterface): void {
     this.value = obj;
   }
 
-  registerOnChange(fn: any): void {}
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
 
   registerOnTouched(fn: any): void {}
 
   setDisabledState?(isDisabled: boolean): void {}
+
+  onClear(): void {
+    this.value = { ...this.value, searchValue: '' };
+    this.onChange(this.value);
+  }
 
   ngOnDestroy(): void {
     this.stateChanges.complete();

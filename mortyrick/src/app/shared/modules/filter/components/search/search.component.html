@@ -1,5 +1,5 @@
-<mat-select placeholder="param..." [(ngModel)]="value!.searchParam">
-  <mat-option [value]="null">none</mat-option>
+<mat-select placeholder="param..." [(ngModel)]="value.searchParam">
+  <mat-option>none</mat-option>
   <mat-option value="name">name</mat-option>
   <mat-option value="type">type</mat-option>
   <mat-option value="species">species</mat-option>
@@ -9,5 +9,16 @@
   matInput
   type="text"
   [placeholder]="placeholder"
-  [(ngModel)]="value!.searchValue"
+  [(ngModel)]="value.searchValue"
 />
+
+@if(value.searchValue){<button
+  type="button"
+  matSuffix
+  mat-icon-button
+  color="warn"
+  aria-label="Clear"
+  (click)="onClear()"
+>
+  <mat-icon>close</mat-icon></button
+>}

@@ -1,28 +1,12 @@
-<!-- <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <mat-form-field color="primary" appearance="outline">
-    <mat-label>search param...</mat-label>
-    <mat-select formControlName="searchParam">
-      <mat-option>none</mat-option>
-      <mat-option value="name">name</mat-option>
-      <mat-option value="type">type</mat-option>
-      <mat-option value="species">species</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-divider [vertical]="true"></mat-divider>
-
-  <mat-form-field color="primary" appearance="outline">
-    <mat-label>search value ...</mat-label>
-    <mat-icon matPrefix>search</mat-icon>
-    <input matInput type="text" formControlName="searchValue" />
-  </mat-form-field>
-  <button type="submit">submit</button>
-</form> -->
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-form-field color="primary" appearance="outline" class="search">
     <mat-label>SEARCH</mat-label>
-    <mat-icon matPrefix>search</mat-icon>
-    <app-search placeholder="value..." formControlName="search"></app-search>
+    <app-search
+      placeholder="value..."
+      formControlName="searchControl"
+    ></app-search>
+    <button matPrefix mat-icon-button color="accent" aria-label="Submit">
+      <mat-icon>search</mat-icon>
+    </button>
   </mat-form-field>
-  <button type="submit">submit</button>
 </form>
