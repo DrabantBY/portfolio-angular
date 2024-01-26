@@ -5,20 +5,10 @@
   <mat-option value="species">species</mat-option>
 </mat-select>
 <mat-divider [vertical]="true"></mat-divider>
+
 <input
   matInput
   type="text"
   [placeholder]="placeholder"
   [(ngModel)]="value.searchValue"
 />
-
-@if(value.searchValue){<button
-  type="button"
-  matSuffix
-  mat-icon-button
-  color="warn"
-  aria-label="Clear"
-  (click)="onClear()"
->
-  <mat-icon>close</mat-icon></button
->}

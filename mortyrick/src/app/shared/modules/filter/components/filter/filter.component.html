@@ -5,8 +5,29 @@
       placeholder="value..."
       formControlName="searchControl"
     ></app-search>
-    <button matPrefix mat-icon-button color="accent" aria-label="Submit">
+    <button
+      matPrefix
+      mat-icon-button
+      color="accent"
+      aria-label="Submit"
+      [disabled]="
+        !form.value.searchControl.searchValue ||
+        !form.value.searchControl.searchParam
+      "
+    >
       <mat-icon>search</mat-icon>
     </button>
+    @if(form.value.searchControl.searchValue){
+    <button
+      type="button"
+      matSuffix
+      mat-icon-button
+      color="warn"
+      aria-label="Clear"
+      (click)="onClear()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    }
   </mat-form-field>
 </form>

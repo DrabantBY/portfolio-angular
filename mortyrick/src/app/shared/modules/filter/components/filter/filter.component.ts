@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-filter',
@@ -10,6 +15,10 @@ export class FilterComponent implements OnInit {
   constructor(private readonly fb: FormBuilder) {}
 
   form: FormGroup;
+
+  onClear(): void {
+    this.form.value.searchControl.searchValue = '';
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({

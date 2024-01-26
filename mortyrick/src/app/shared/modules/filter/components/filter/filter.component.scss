@@ -21,6 +21,10 @@ button[matPrefix] {
   }
 }
 
+button[matSuffix] {
+  margin-inline-end: 1rem;
+}
+
 .search {
   display: block;
   width: 50rem;

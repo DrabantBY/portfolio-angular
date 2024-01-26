@@ -91,10 +91,10 @@ export class SearchComponent
 
   setDisabledState?(isDisabled: boolean): void {}
 
-  onClear(): void {
-    this.value = { ...this.value, searchValue: '' };
-    this.onChange(this.value);
-  }
+  // onClear(): void {
+  //   this.value = { ...this.value, searchValue: '' };
+  //   this.onChange(this.value);
+  // }
 
   ngOnDestroy(): void {
     this.stateChanges.complete();
