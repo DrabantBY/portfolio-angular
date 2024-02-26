@@ -17,13 +17,12 @@ import { EpisodeService } from './services/episode.service';
 import { EpisodeComponent } from './components/episode/episode.component';
 import { EpisodeListComponent } from './components/episode-list/episode-list.component';
 
-import { RoutesEnum } from '../shared/types/routes.enum';
 import { PaginationModule } from '../shared/modules/pagination/pagination.module';
 import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 
 const routes = [
   {
-    path: RoutesEnum.EPISODE,
+    path: '',
     component: EpisodeComponent,
   },
 ];

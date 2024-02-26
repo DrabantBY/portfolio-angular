@@ -14,7 +14,6 @@ import { CharacterService } from './services/character.service';
 import { characterReducer } from './store/character.reducers';
 import { CharacterEffect } from './store/character.effects';
 
-import { RoutesEnum } from '../shared/types/routes.enum';
 import { PaginationModule } from '../shared/modules/pagination/pagination.module';
 import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 import { CharacterListComponent } from './components/character-list/character-list.component';
@@ -22,7 +21,7 @@ import { FilterModule } from '../shared/modules/filter/filter.module';
 
 const routes = [
   {
-    path: RoutesEnum.CHARACTER,
+    path: '',
     component: CharacterComponent,
   },
 ];

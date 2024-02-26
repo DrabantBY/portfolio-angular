@@ -16,14 +16,13 @@ import { LocationService } from './services/location.service';
 import { LocationEffect } from './store/location.effects';
 import { locationReducer } from './store/location.reducers';
 
-import { RoutesEnum } from '../shared/types/routes.enum';
 import { PaginationModule } from '../shared/modules/pagination/pagination.module';
 import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 import { LocationListComponent } from './components/location-list/location-list.component';
 
 const routes = [
   {
-    path: RoutesEnum.LOCATION,
+    path: '',
     component: LocationComponent,
   },
 ];
