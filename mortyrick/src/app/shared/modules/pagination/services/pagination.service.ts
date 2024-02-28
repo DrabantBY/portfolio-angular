@@ -8,6 +8,6 @@ export class PaginationService extends MatPaginatorIntl {
     pageSize: number,
     length: number
   ): string => {
-    return `${page + 1}/${Math.ceil(length / pageSize) || '∞'}`;
+    return `${page + 1}/${Math.ceil(length / pageSize)}`;
   };
 }
