@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, RouterLinkActive } from '@angular/router';
 import { RoutesEnum } from './shared/types/routes.enum';
 
 const routes: Routes = [
@@ -32,7 +32,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      paramsInheritanceStrategy: 'always',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

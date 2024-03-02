@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ResponseInfoInterface } from '../../../../types/responseInfo.interface';
 import { Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
@@ -10,10 +10,17 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class PaginationComponent {
   constructor(private readonly router: Router) {}
+  #length: number;
 
-  @Input({ required: true }) info: ResponseInfoInterface | null;
   @Input({ required: true }) currentPageIndex: number;
   @Input({ required: true }) isLoading: boolean | null;
+  @Input({ required: true })
+  set length(info: ResponseInfoInterface | null) {
+    this.#length = info ? info.count : this.#length;
+  }
+  get length(): number {
+    return this.#length;
+  }
 
   onPageNavigate(event: PageEvent): void {
     this.router.navigate([], {
